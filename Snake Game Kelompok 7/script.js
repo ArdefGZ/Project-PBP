@@ -28,10 +28,9 @@ const updateFoodPosition = () => {
 }
 
 const handleGameOver = () => {
-    // Mereset Waktu dan Memuat Ulang Halaman Saat Game Over
     clearInterval(setIntervalId);
-    alert("Game Over! Press OK to replay...");
-    location.reload();
+    const popupContainer = document.getElementById("popupContainer");
+    popupContainer.style.display = "flex";
 }
 
 const changeDirection = e => {
@@ -93,6 +92,14 @@ const initGame = () => {
     }
     playBoard.innerHTML = html;
 }
+
+const closePopupButton = document.getElementById("closePopup");
+
+closePopupButton.addEventListener("click", () => {
+    const popupContainer = document.getElementById("popupContainer");
+    popupContainer.style.display = "none";
+    location.reload();
+});
 
 updateFoodPosition();
 setIntervalId = setInterval(initGame, 100);
