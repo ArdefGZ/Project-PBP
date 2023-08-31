@@ -1,4 +1,4 @@
-l// Ahmad Alvin Griffin (24060121140106)
+// Ahmad Alvin Griffin (24060121140106)
 // Arya Dheffan Shevchenko (24060121140160)
 // Dafa Kurnia Dinata (24060121120003)
 // Dhiya Mazaya (24060121140151)
@@ -28,14 +28,14 @@ const updateFoodPosition = () => {
 }
 
 const handleGameOver = () => {
-    // Clearing the timer and reloading the page on game over
+    // Mereset Waktu dan Memuat Ulang Halaman Saat Game Over
     clearInterval(setIntervalId);
     alert("Game Over! Press OK to replay...");
     location.reload();
 }
 
 const changeDirection = e => {
-    // Changing velocity value based on key press
+    // Mengubah Arah Gerak Berdasarkan Tombol
     if(e.key === "ArrowUp" && velocityY != 1) {
         velocityX = 0;
         velocityY = -1;
@@ -51,7 +51,7 @@ const changeDirection = e => {
     }
 }
 
-// Calling changeDirection on each key click and passing key dataset value as an object
+// Memanggil Pengubah Arah pada setiap klik tombol dan meneruskan nilai kumpulan data kunci sebagai objek
 controls.forEach(button => button.addEventListener("click", () => changeDirection({ key: button.dataset.key })));
 
 const initGame = () => {
