@@ -1,4 +1,4 @@
-// Ahmad Alvin Griffin (24060121140106)
+l// Ahmad Alvin Griffin (24060121140106)
 // Arya Dheffan Shevchenko (24060121140160)
 // Dafa Kurnia Dinata (24060121120003)
 // Dhiya Mazaya (24060121140151)
@@ -22,7 +22,7 @@ let highScore = localStorage.getItem("high-score") || 0;
 highScoreElement.innerText = `High Score: ${highScore}`;
 
 const updateFoodPosition = () => {
-    // Passing a random 1 - 30 value as food position
+    // Melewati Value 1 - 30 Secara Acak Sebagai Posisi Makanan
     foodX = Math.floor(Math.random() * 30) + 1;
     foodY = Math.floor(Math.random() * 30) + 1;
 }
