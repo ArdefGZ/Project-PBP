@@ -1,3 +1,8 @@
+/* Ahmad Alvin Griffin (24060121140106)
+    Arya Dheffan Shevchenko (24060121140160)
+    Dafa Kurnia Dinata (24060121120003)
+    Dhiya Mazaya (24060121140151)
+    Rafif Abbrar Maheswara (24060121140163) */
 /* Import Google font */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 * {
@@ -11,7 +16,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #626F92;
+  background: url("background.png");
 }
 .wrapper {
   width: 65vmin;
@@ -36,7 +41,7 @@ body {
   height: 100%;
   width: 100%;
   display: grid;
-  background: #272637;
+  background: #4850b9;
   grid-template: repeat(30, 1fr) / repeat(30, 1fr);
 }
 .play-board .food {
