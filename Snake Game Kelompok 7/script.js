@@ -1,3 +1,9 @@
+// Ahmad Alvin Griffin (24060121140106)
+// Arya Dheffan Shevchenko (24060121140160)
+// Dafa Kurnia Dinata (24060121120003)
+// Dhiya Mazaya (24060121140151)
+// Rafif Abbrar Maheswara (24060121140163)
+
 const playBoard = document.querySelector(".play-board");
 const scoreElement = document.querySelector(".score");
 const highScoreElement = document.querySelector(".high-score");
