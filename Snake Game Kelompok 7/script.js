@@ -43,7 +43,7 @@ startButton.addEventListener("click", () => {
   const startPopup = document.getElementById("startPopup");
   startPopup.style.display = "none";
   gameStarted = true;
-  // Start the game here (e.g., by calling your initGame function)
+  // Start game 
 });
 
 
@@ -71,7 +71,7 @@ const initGame = () => {
     if (gameOver) return handleGameOver();
     let html = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
   
-    // Checking if the snake hit the food
+    // Memeriksa apakah ular menyentuh makanan
     if (snakeX === foodX && snakeY === foodY) {
       updateFoodPosition();
       snakeBody.push([foodY, foodX]); // Pushing food position to snake body array
@@ -82,11 +82,11 @@ const initGame = () => {
       highScoreElement.innerText = `High Score: ${highScore}`;
       foodEatSound.play();
     }
-    // Updating the snake's head position based on the current velocity
+    // Memperbarui posisi kepala ular berdasarkan kecepatan saat ini
     snakeX += velocityX;
     snakeY += velocityY;
   
-    // Determine the direction and apply the corresponding CSS class
+    // Tentukan arah dan terapkan kelas CSS yang sesuai
     let directionClass = "";
     if (velocityX === -1) {
       directionClass = "pacman-left";
@@ -98,22 +98,22 @@ const initGame = () => {
       directionClass = "pacman-down";
     }
   
-    // Shifting forward the values of the elements in the snake body by one
+    // Menggeser elemen dalam tubuh ular satu per satu
     for (let i = snakeBody.length - 1; i > 0; i--) {
       snakeBody[i] = snakeBody[i - 1];
     }
     snakeBody[0] = [snakeX, snakeY]; // Setting first element of snake body to current snake position
   
-    // Checking if the snake's head is out of wall, if so setting gameOver to true
+    // Memeriksa apakah kepala ular keluar dari dinding, jika keluar, setting game over ke permainan
     if (snakeX <= 0 || snakeX > 30 || snakeY <= 0 || snakeY > 30) {
       deathSound.play();
       return (gameOver = true);
     }
   
     for (let i = 0; i < snakeBody.length; i++) {
-      // Adding a div for each part of the snake's body with the direction class
+      // Menambahkan div untuk setiap bagian tubuh ular dengan arahnya
       html += `<div class="head ${directionClass}" style="grid-area: ${snakeBody[i][1]} / ${snakeBody[i][0]}"></div>`;
-      // Checking if the snake head hit the body, if so set gameOver to true
+      // Memeriksa apakah kepala ular mengenai badan, jika mengenai, atur game over ke permainan
       if (i !== 0 && snakeBody[0][1] === snakeBody[i][1] && snakeBody[0][0] === snakeBody[i][0]) {
         gameOver = true;
       }
@@ -121,7 +121,7 @@ const initGame = () => {
     playBoard.innerHTML = html;
 };
 
-// Add this at the top of your JavaScript code to get references to the audio elements
+// Tambahkan code ini di bagian atas kode JavaScript Anda untuk mendapatkan referensi ke elemen audio
 const startMusic = document.getElementById("startMusic");
 const gameplayMusic = document.getElementById("gameplayMusic");
 const gameoverMusic = document.getElementById("gameoverMusic");
@@ -134,20 +134,20 @@ gameoverMusic.volume = 0.3;
 deathSound.volume = 0.7;
 
 
-// Add this inside your "startButton" click event listener to start the game
+// Tambahkan code ini di dalam bagian klik "startButton" Anda untuk memulai permainan
 startButton.addEventListener("click", () => {
   const startPopup = document.getElementById("startPopup");
   startPopup.style.display = "none";
   gameStarted = true;
 
-  // Start the gameplay music and pause the start music
+  // Mulai musik gameplay dan jeda musik awal
   startMusic.pause();
   gameplayMusic.play();
 
-  // Start the game here (e.g., by calling your initGame function)
+  // Start the game here 
 });
 
-// Add this at the end of your JavaScript code
+// Tambahkan ini di akhir kode JavaScript Anda
 window.addEventListener("load", () => {
     const startPopup = document.getElementById("startPopup");
     startPopup.style.display = "flex";
