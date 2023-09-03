@@ -74,7 +74,7 @@ const initGame = () => {
     // Memeriksa apakah ular menyentuh makanan
     if (snakeX === foodX && snakeY === foodY) {
       updateFoodPosition();
-      snakeBody.push([foodY, foodX]); // Pushing food position to snake body array
+      snakeBody.push([foodY, foodX]); // Mendorong posisi makanan ke susunan tubuh ular
       score++; // increment score by 1
       highScore = score >= highScore ? score : highScore;
       localStorage.setItem("high-score", highScore);
@@ -102,7 +102,7 @@ const initGame = () => {
     for (let i = snakeBody.length - 1; i > 0; i--) {
       snakeBody[i] = snakeBody[i - 1];
     }
-    snakeBody[0] = [snakeX, snakeY]; // Setting first element of snake body to current snake position
+    snakeBody[0] = [snakeX, snakeY]; // Mengatur elemen pertama tubuh ular ke posisi ular saat ini
   
     // Memeriksa apakah kepala ular keluar dari dinding, jika keluar, setting game over ke permainan
     if (snakeX <= 0 || snakeX > 30 || snakeY <= 0 || snakeY > 30) {
@@ -147,7 +147,7 @@ startButton.addEventListener("click", () => {
   // Start the game here 
 });
 
-// Tambahkan ini di akhir kode JavaScript Anda
+// Tambahkan kode ini di akhir kode JavaScript 
 window.addEventListener("load", () => {
     const startPopup = document.getElementById("startPopup");
     startPopup.style.display = "flex";
