@@ -113,6 +113,10 @@ body {
     background-color: #3880FF;
 }
 
+.popup button:active {
+  font-size: 10px;
+}
+
 @media screen and (max-width: 800px) {
   .wrapper {
     width: 90vmin;
