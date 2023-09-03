@@ -94,7 +94,7 @@ body {
 .popup img {
     max-width: 100%;
     height: auto;
-    width: 50px;
+    width: 200px;
 }
 
 .popup button {
@@ -129,4 +129,59 @@ body {
     padding: 15px 0;
     font-size: 1rem;
   }
+}
+
+.play-board .head {
+  background-image: url("pacman.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.2s; /* Add a transition for smooth rotation */
+}
+
+/* Define classes for different directions */
+.pacman-left {
+  transform: rotate(180deg); /* Rotate Pac-Man 180 degrees for left direction */
+}
+
+.pacman-right {
+  transform: rotate(0deg); /* No rotation for right direction */
+}
+
+.pacman-up {
+  transform: rotate(-90deg); /* Rotate Pac-Man -90 degrees for up direction */
+}
+
+.pacman-down {
+  transform: rotate(90deg); /* Rotate Pac-Man 90 degrees for down direction */
+}
+
+#startPopup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#startPopup .popup {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+#startButton {
+  display: block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #60CBFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#startButton:hover {
+  background-color: #3880FF;
 }
