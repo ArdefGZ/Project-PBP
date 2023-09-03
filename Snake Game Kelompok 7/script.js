@@ -32,6 +32,9 @@ const handleGameOver = () => {
     clearInterval(setIntervalId);
     const popupContainer = document.getElementById("popupContainer");
     popupContainer.style.display = "flex";
+    gameplayMusic.pause();
+    deathSound.pause();
+    gameoverMusic.play();
 }
 
 const startButton = document.getElementById("startButton");
@@ -77,6 +80,7 @@ const initGame = () => {
       localStorage.setItem("high-score", highScore);
       scoreElement.innerText = `Score: ${score}`;
       highScoreElement.innerText = `High Score: ${highScore}`;
+      foodEatSound.play();
     }
     // Updating the snake's head position based on the current velocity
     snakeX += velocityX;
@@ -102,6 +106,7 @@ const initGame = () => {
   
     // Checking if the snake's head is out of wall, if so setting gameOver to true
     if (snakeX <= 0 || snakeX > 30 || snakeY <= 0 || snakeY > 30) {
+      deathSound.play();
       return (gameOver = true);
     }
   
@@ -116,6 +121,32 @@ const initGame = () => {
     playBoard.innerHTML = html;
 };
 
+// Add this at the top of your JavaScript code to get references to the audio elements
+const startMusic = document.getElementById("startMusic");
+const gameplayMusic = document.getElementById("gameplayMusic");
+const gameoverMusic = document.getElementById("gameoverMusic");
+const foodEatSound = document.getElementById("foodEatSound");
+const deathSound = document.getElementById("deathSound");
+
+startMusic.volume = 0.3;
+gameplayMusic.volume = 0.6;
+gameoverMusic.volume = 0.3;
+deathSound.volume = 0.7;
+
+
+// Add this inside your "startButton" click event listener to start the game
+startButton.addEventListener("click", () => {
+  const startPopup = document.getElementById("startPopup");
+  startPopup.style.display = "none";
+  gameStarted = true;
+
+  // Start the gameplay music and pause the start music
+  startMusic.pause();
+  gameplayMusic.play();
+
+  // Start the game here (e.g., by calling your initGame function)
+});
+
 // Add this at the end of your JavaScript code
 window.addEventListener("load", () => {
     const startPopup = document.getElementById("startPopup");
@@ -123,6 +154,8 @@ window.addEventListener("load", () => {
     if (!gameStarted) {
         startPopup.style.display = "flex";
     }
+
+    startMusic.play();
   });
 
 
@@ -133,6 +166,8 @@ closePopupButton.addEventListener("click", () => {
     popupContainer.style.display = "none";
     location.reload();
     startPopup.style.display = "none";
+
+    gameoverMusic.pause();
 });
 
 updateFoodPosition();
