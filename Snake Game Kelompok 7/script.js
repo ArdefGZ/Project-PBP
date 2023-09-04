@@ -46,7 +46,7 @@ startButton.addEventListener("click", () => {
   // Start game 
 });
 
-
+// Menggunakan If-Else Statement
 const changeDirection = e => {
     // Mengubah Arah Gerak Berdasarkan Tombol
     if(e.key === "ArrowUp" && velocityY != 1) {
@@ -87,6 +87,7 @@ const initGame = () => {
     snakeY += velocityY;
   
     // Tentukan arah dan terapkan kelas CSS yang sesuai
+    // Menggunakan If-Else Statement
     let directionClass = "";
     if (velocityX === -1) {
       directionClass = "pacman-left";
