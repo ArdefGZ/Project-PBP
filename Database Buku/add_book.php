@@ -68,7 +68,7 @@ if (isset($_POST["submit"])){
 <br>
 <div class="container">
     <div class="card">
-        <div class="card-header">Add Customers Data</div>
+        <div class="card-header">Add Books Data</div>
         <div class="card-body">
             <form method="POST" autocomplete="on" >
             <div class="form-group">
