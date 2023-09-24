@@ -43,7 +43,7 @@ if($id != ""){
                     <th>Title</th>
                     <th>Price</th>
                     <th>Qty</th>
-                    <th>Price * Qty</th>
+                    <th>Total</th>
                 </tr>
                 <?php 
                 //include our login information
