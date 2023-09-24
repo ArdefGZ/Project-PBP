@@ -27,6 +27,7 @@
                 </div>
             </div>
         </form>
+        <a href="javascript:history.back()" class="btn btn-secondary">Back</a> <!-- Tombol "back" -->
         <table class="table table-striped">
             <thead>
                 <tr>
