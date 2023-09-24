@@ -25,7 +25,7 @@
 	} else{
 		while ($row = $result->fetch_object()){
 			echo '<table class="table">';
-			echo '<tr><td>ISBN</td> <td>:</td> <td>'.$row->id.'</td></tr>';
+			echo '<tr><td>ISBN</td> <td>:</td> <td>'.$row->isbn.'</td></tr>';
 			echo '<tr><td>Author</td> <td>:</td> <td>'.$row->author.'</td></tr>';
 			echo '<tr><td>Category ID</td> <td>:</td> <td>'.$row->categoryid.'</td></tr>';
 			echo '<tr><td>Title</td> <td>:</td> <td>'.$row->title.'</td></tr>';
