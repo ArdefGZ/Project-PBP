@@ -71,7 +71,7 @@
                     }
 
                     // Build the SQL query with search and category filter
-                    $query = "SELECT a.isbn, a.author, b.name, a.title, a.price FROM books a, categories b WHERE a.categoryid = b.categoryid AND title LIKE '%$search_query%'";
+                    $query = "SELECT a.isbn, a.author, b.name, a.title, a.price FROM books a, categories b WHERE a.categoryid = b.categoryid AND (title LIKE '%$search_query%' OR author LIKE '%$search_query%' OR isbn LIKE '%$search_query%')";
                     if (!empty($category_filter)) {
                         $query .= " AND name = '$category_filter'";
                     }
@@ -104,58 +104,48 @@
             </table>
             <p id="totalRows"></p>
             <script>
-           
-
-            // JavaScript to filter and update the table based on the selected category
-            document.getElementById('categorySelect').addEventListener('change', function() {
-                filterTable();
-            });
-
-            // JavaScript to filter and update the table based on the title search input
-            document.getElementById('search').addEventListener('input', function() {
-                filterTableByTitle();
-            });
-
-            // Function to filter and update the table based on search and category filters
-            function filterTable() {
-                const searchValue = document.getElementById('search').value.toLowerCase();
-                const categoryValue = document.getElementById('categorySelect').value;
-                const rows = document.querySelectorAll("#bookTable tbody tr");
-                let rowCount = 0; // Initialize row count
-
-                rows.forEach(row => {
-                    const title = row.querySelector("td:nth-child(4)").textContent.toLowerCase();
-                    const category = row.querySelector("td:nth-child(3)").textContent;
-                    if ((categoryValue === "" || category === categoryValue) && title.includes(searchValue)) {
-                        row.style.display = "";
-                        rowCount++; // Increment row count for visible rows
-                    } else {
-                        row.style.display = "none";
-                    }
+                // JavaScript to filter and update the table based on the selected category
+                document.getElementById('categorySelect').addEventListener('change', function() {
+                    filterTable();
                 });
 
-                // Update the total rows count in the footer
-                document.getElementById('totalRows').textContent = 'Total Rows = ' + rowCount;
-            }
-
-            // Function to filter and update the table based on the title search input
-            function filterTableByTitle() {
-                const titleSearchValue = document.getElementById('search').value.toLowerCase();
-                const rows = document.querySelectorAll("#bookTable tbody tr");
-
-                rows.forEach(row => {
-                    const title = row.querySelector("td:nth-child(4)").textContent.toLowerCase();
-                    if (title.includes(titleSearchValue)) {
-                        row.style.display = "";
-                    } else {
-                        row.style.display = "none";
-                    }
+                // JavaScript to filter and update the table based on the search input
+                document.getElementById('search').addEventListener('input', function() {
+                    filterTable();
                 });
-            }
-            
-        </script>
+
+                // Function to filter and update the table based on search and category filters
+                function filterTable() {
+                    const searchValue = document.getElementById('search').value.toLowerCase();
+                    const categoryValue = document.getElementById('categorySelect').value;
+                    const rows = document.querySelectorAll("#bookTable tbody tr");
+                    let rowCount = 0; // Initialize row count
+
+                    rows.forEach(row => {
+                        const title = row.querySelector("td:nth-child(4)").textContent.toLowerCase();
+                        const author = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+                        const isbn = row.querySelector("td:nth-child(1)").textContent.toLowerCase();
+                        const category = row.querySelector("td:nth-child(3)").textContent;
+
+                        // Check if the searchValue exists in any of the columns
+                        if (
+                            (categoryValue === "" || category === categoryValue) &&
+                            (title.includes(searchValue) || author.includes(searchValue) || isbn.includes(searchValue))
+                        ) {
+                            row.style.display = "";
+                            rowCount++; // Increment row count for visible rows
+                        } else {
+                            row.style.display = "none";
+                        }
+                    });
+
+                    // Update the total rows count in the footer
+                    document.getElementById('totalRows').textContent = 'Total Rows = ' + rowCount;
+                }
+            </script>
+
         </section>
-        
+
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
