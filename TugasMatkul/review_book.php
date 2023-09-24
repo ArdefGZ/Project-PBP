@@ -36,6 +36,7 @@
                             echo '<tr><td>Review</td> <td>:</td> <td>'.$row->review.'</td></tr>';
                             echo '</table>';
                         }
+                        echo '<a href="view_books_detail.php?id='.$id.'" class="btn btn-primary">Back</a>';
 					} else {
 						while ($row = $result2->fetch_object()){
 							echo '<table class="table">';
