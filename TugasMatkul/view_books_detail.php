@@ -13,12 +13,14 @@
 <body>
     <main class="table">
         <section class="table__header">
-            <h1>Book's Data</h1>
+            <h1 style="font-size: 24px;">Book's Data</h1>
             <div class="input-group">
                 <input type="search" id="search" placeholder="Search...">
             </div>
             <a class="custom-button" href="add_book.php">+ Add Book Data</a><br /><br />
-            <a class="custom-button" href="graf_buku.php">Rekap Data</a>
+            <a class="custom-button" href="graf_buku.php">Rekap Data</a><br /><br />
+            <a class="custom-button" href="show_cart.php?id=' . $row->isbn . '">Show Cart</a><br /><br />
+            <a class="custom-button" href="order_date.php?id=' . $row->isbn . '">Order</a><br /><br />
             <div class="export__file">
                 <label for="export-file" class="export__file-btn" title="Export File"></label>
                 <input type="checkbox" id="export-file">
