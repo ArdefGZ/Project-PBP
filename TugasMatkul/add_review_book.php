@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Review</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="style/add_review_book_styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 
 <body> 
@@ -31,10 +31,8 @@
                     if (!$result) {
                         die("Could not query the database: <br />". $db->error);
                     } else {
-                        echo '<div class="alert alert-success" role="alert">Review added successfully!</div>';
-                        echo '<a class="btn btn-primary" href="success_add_book.php?id='.$id.'">OK</a>'; // Tambahkan tombol OK
                         $db->close(); // Tutup koneksi
-                        exit(); // Keluar dari skrip setelah berhasil menyimpan review
+                        header('Location: success_add_book.php');
                     }
                 }
                 ?>
