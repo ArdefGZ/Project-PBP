@@ -35,6 +35,27 @@ h1 {
     width: 100%;
 }
 
+/* Styling for "Back" button */
+.btn-secondary {
+    background-color: #d1332e; /* Warna latar belakang */
+    color: #fff; /* Warna teks */
+    border: none; /* Hilangkan border */
+    padding: 10px 20px; /* Ruang dalam tombol */
+    text-align: center; /* Teks rata tengah */
+    text-decoration: none; /* Hilangkan dekorasi teks */
+    display: inline-block;
+    font-size: 16px; /* Ukuran teks */
+    margin: 10px 0; /* Ruang luar tombol */
+    cursor: pointer; /* Pointer tangan saat mengarahkan kursor */
+    border-radius: 5px; /* Bentuk sudut tombol */
+    transition: background-color 0.3s; /* Animasi perubahan warna latar belakang */
+}
+
+/* Hover state for "Back" button */
+.btn-back:hover {
+    background-color: #0056b3; /* Warna latar belakang saat dihover */
+}
+
 /* Styling for the table */
 .table {
     background-color: rgba(255, 255, 255, 0.9); /* Latar belakang tabel dengan transparansi */
