@@ -31,12 +31,13 @@
                         die("Could not query the database: <br />". $db->error);
                     } else {
                         echo '<div class="alert alert-success" role="alert">Review added successfully!</div>';
+                        echo '<a class="btn btn-primary" href="success_add_book.php?id='.$id.'">OK</a>'; // Tambahkan tombol OK
+                        $db->close(); // Tutup koneksi
+                        exit(); // Keluar dari skrip setelah berhasil menyimpan review
                     }
-                    
-                    $db->close();
                 }
                 ?>
-                <form method="post" action="success_add_book.php"> <!-- Perubahan pada atribut action -->
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                     <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
                     <div class="mb-3">
                         <label for="review" class="form-label">Review</label>
