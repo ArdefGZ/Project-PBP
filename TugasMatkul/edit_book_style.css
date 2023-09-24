@@ -1,0 +1,99 @@
+/* edit_book_styles.css */
+
+/* Background image */
+body {
+    background-image: url('books.jpg'); /* Ganti 'path/to/your/image.jpg' dengan path gambar latar belakang Anda */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+/* Styling container */
+.container {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Menambahkan latar belakang semi-transparan ke dalam container */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling card */
+.card {
+    width: 100%;
+    margin: 0 auto;
+    background-color: transparent;
+    border: transparent;
+}
+
+/* Styling card header */
+.card-header {
+    background-color: #672828;
+    color: #ffffff;
+    width: 100%;
+}
+
+/* Styling form elements */
+.form-group {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Styling form labels */
+label {
+    font-weight: bold;
+}
+
+/* Styling form input and select elements */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #594b4b;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+/* Styling form input and select elements on focus */
+.form-control:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Styling bubble effect on hover */
+.form-control:hover::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    top: 5px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+/* Styling error messages */
+.text-danger {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Styling buttons */
+.btn-primary {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: #a82c2c;
+    color: #fff;
+    border: none;
+}
+
+/* Add some spacing */
+br {
+    margin-top: 10px;
+}
