@@ -132,6 +132,7 @@
                 </tbody>
             </table>
             <p id="totalRows"></p>
+            <a class="btn btn-primary" href="categoryTable.php?id=' . $row->isbn . '">Tampilkan Data Sesuai Kategori</a><br /><br />
             <script>
                 // JavaScript to filter and update the table based on the selected category
                 document.getElementById('categorySelect').addEventListener('change', function() {
