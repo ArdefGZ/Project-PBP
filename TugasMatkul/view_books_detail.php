@@ -15,9 +15,10 @@
         <section class="table__header">
             <h1>Book's Data</h1>
             <div class="input-group">
-                <input type="search" id="search" placeholder="Search by Title...">
+                <input type="search" id="search" placeholder="Search...">
             </div>
             <a class="custom-button" href="add_book.php">+ Add Book Data</a><br /><br />
+            <a class="custom-button" href="graf_buku.php">Rekap Data</a>
             <div class="export__file">
                 <label for="export-file" class="export__file-btn" title="Export File"></label>
                 <input type="checkbox" id="export-file">
@@ -110,7 +111,7 @@
 
                     // Fetch and display the results
                     while ($row = $result->fetch_object()) {
-                        echo '<tr>';
+                        echo '<tr id="bookRow" data-isbn="' . $row->isbn . '">';
                         echo '<td>' . $row->isbn . '</td>';
                         echo '<td>' . $row->author . '</td>';
                         echo '<td>' . $row->name . '</td>';
@@ -178,6 +179,16 @@
                     // Update the total rows count in the footer
                     document.getElementById('totalRows').textContent = 'Total Rows = ' + rowCount;
                 }
+                document.addEventListener('DOMContentLoaded', function() {
+                    const rows = document.querySelectorAll("#bookTable tbody tr");
+
+                    rows.forEach(row => {
+                        row.addEventListener('click', function() {
+                            const isbn = this.getAttribute('data-isbn');
+                            window.location.href = 'review_book.php?id=' + isbn;
+                        });
+                    });
+                });
             </script>
 
         </section>
