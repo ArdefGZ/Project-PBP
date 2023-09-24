@@ -15,7 +15,7 @@
         <section class="table__header">
             <h1>Book's Data</h1>
             <div class="input-group">
-                <input type="search" id="searchByTitle" placeholder="Search by Title...">
+                <input type="search" id="search" placeholder="Search by Title...">
             </div>
             <a class="custom-button" href="add_book.php">+ Add Book Data</a><br /><br />
             <div class="export__file">
@@ -35,14 +35,14 @@
                 <label for="categorySelect">Category:</label>
                 <select class="form-select" id="categorySelect">
                     <option value="">All Categories</option>
-                    <option value="1">Fiction</option>
-                    <option value="2">Science Fiction</option>
-                    <option value="3">Mystery</option>
-                    <option value="4">Romance</option>
-                    <option value="5">Fantasy</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Science Fiction">Science Fiction</option>
+                    <option value="Mystery">Mystery</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Fantasy">Fantasy</option>
                 </select>
             </div>
-            <table>
+            <table id="bookTable">
                 <thead>
                     <tr>
                         <th> ISBN <span class="icon-arrow">&UpArrow;</span></th>
@@ -71,9 +71,9 @@
                     }
 
                     // Build the SQL query with search and category filter
-                    $query = "SELECT isbn, author, categoryid, title, price FROM books WHERE title LIKE '%$search_query%'";
+                    $query = "SELECT a.isbn, a.author, b.name, a.title, a.price FROM books a, categories b WHERE a.categoryid = b.categoryid AND title LIKE '%$search_query%'";
                     if (!empty($category_filter)) {
-                        $query .= " AND categoryid = '$category_filter'";
+                        $query .= " AND name = '$category_filter'";
                     }
                     $query .= " ORDER BY isbn";
 
@@ -88,7 +88,7 @@
                         echo '<tr>';
                         echo '<td>' . $row->isbn . '</td>';
                         echo '<td>' . $row->author . '</td>';
-                        echo '<td>' . $row->categoryid . '</td>';
+                        echo '<td>' . $row->name . '</td>';
                         echo '<td>' . $row->title . '</td>';
                         echo '<td> $' . $row->price . '</td>';
                         echo '<td><a class="btn btn-warning btn-sm" href="edit_book.php?id=' . $row->isbn . '">Edit</a>&nbsp;&nbsp;
@@ -102,12 +102,9 @@
                     <br><br>
                 </tbody>
             </table>
-        </section>
-        <script>
-            // JavaScript to filter and update the table when input changes
-            document.getElementById('search').addEventListener('input', function() {
-                filterTable();
-            });
+            <p id="totalRows"></p>
+            <script>
+           
 
             // JavaScript to filter and update the table based on the selected category
             document.getElementById('categorySelect').addEventListener('change', function() {
@@ -115,7 +112,7 @@
             });
 
             // JavaScript to filter and update the table based on the title search input
-            document.getElementById('searchByTitle').addEventListener('input', function() {
+            document.getElementById('search').addEventListener('input', function() {
                 filterTableByTitle();
             });
 
@@ -143,7 +140,7 @@
 
             // Function to filter and update the table based on the title search input
             function filterTableByTitle() {
-                const titleSearchValue = document.getElementById('searchByTitle').value.toLowerCase();
+                const titleSearchValue = document.getElementById('search').value.toLowerCase();
                 const rows = document.querySelectorAll("#bookTable tbody tr");
 
                 rows.forEach(row => {
@@ -155,7 +152,10 @@
                     }
                 });
             }
+            
         </script>
+        </section>
+        
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
