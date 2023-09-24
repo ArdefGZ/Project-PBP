@@ -42,6 +42,16 @@
                     <option value="Fantasy">Fantasy</option>
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="priceRange">Price Range:</label>
+                <select class="form-select" id="priceRange">
+                    <option value="">All</option>
+                    <option value="0-10">$0 - $10</option>
+                    <option value="10-30">$10 - $30</option>
+                    <option value="30-50">$30 - $50</option>
+                    <option value="50+">$50+</option>
+                </select>
+            </div>
             <table id="bookTable">
                 <thead>
                     <tr>
@@ -58,22 +68,37 @@
                     // Include our login information
                     require_once('db_login.php');
 
-                    // Initialize search query and category filter
+                    // Initialize search query, category filter, and price range filter
                     $search_query = "";
                     $category_filter = "";
+                    $price_range_filter = "";
 
-                    // Check if the search input and category filter are provided
+                    // Check if the search input, category filter, and price range filter are provided
                     if (isset($_GET['search'])) {
                         $search_query = $_GET['search'];
                     }
                     if (isset($_GET['category'])) {
                         $category_filter = $_GET['category'];
                     }
+                    if (isset($_GET['price_range'])) {
+                        $price_range_filter = $_GET['price_range'];
+                    }
 
-                    // Build the SQL query with search and category filter
+                    // Build the SQL query with search, category filter, and price range filter
                     $query = "SELECT a.isbn, a.author, b.name, a.title, a.price FROM books a, categories b WHERE a.categoryid = b.categoryid AND (title LIKE '%$search_query%' OR author LIKE '%$search_query%' OR isbn LIKE '%$search_query%')";
                     if (!empty($category_filter)) {
                         $query .= " AND name = '$category_filter'";
+                    }
+                    if (!empty($price_range_filter)) {
+                        if ($price_range_filter === "0-10") {
+                            $query .= " AND a.price >= 0 AND a.price <= 10";
+                        } elseif ($price_range_filter === "10-30") {
+                            $query .= " AND a.price > 10 AND a.price <= 30";
+                        } elseif ($price_range_filter === "30-50") {
+                            $query .= " AND a.price > 30 AND a.price <= 50";
+                        } elseif ($price_range_filter === "50+") {
+                            $query .= " AND a.price > 50";
+                        }
                     }
                     $query .= " ORDER BY isbn";
 
@@ -93,7 +118,6 @@
                         echo '<td> $' . $row->price . '</td>';
                         echo '<td><a class="btn btn-warning btn-sm" href="edit_book.php?id=' . $row->isbn . '">Edit</a>&nbsp;&nbsp;
                             <a class="btn btn-danger btn-sm" href="confirm_delete_book.php?id=' . $row->isbn . '&op=delete">Delete</a>
-                            <a class="btn btn-primary" href="show_cart.php?id='.$row->isbn.'">Add to Cart</a>
                             </td>';
                         echo '</tr>';
                     }
@@ -115,10 +139,16 @@
                     filterTable();
                 });
 
-                // Function to filter and update the table based on search and category filters
+                // JavaScript to filter and update the table based on the selected price range
+                document.getElementById('priceRange').addEventListener('change', function() {
+                    filterTable();
+                });
+
+                // Function to filter and update the table based on search, category filter, and price range filter
                 function filterTable() {
                     const searchValue = document.getElementById('search').value.toLowerCase();
                     const categoryValue = document.getElementById('categorySelect').value;
+                    const priceRangeValue = document.getElementById('priceRange').value;
                     const rows = document.querySelectorAll("#bookTable tbody tr");
                     let rowCount = 0; // Initialize row count
 
@@ -127,11 +157,16 @@
                         const author = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
                         const isbn = row.querySelector("td:nth-child(1)").textContent.toLowerCase();
                         const category = row.querySelector("td:nth-child(3)").textContent;
+                        const price = parseFloat(row.querySelector("td:nth-child(5)").textContent.replace('$', ''));
 
-                        // Check if the searchValue exists in any of the columns
+                        // Check if the searchValue, category, and price range match
                         if (
                             (categoryValue === "" || category === categoryValue) &&
-                            (title.includes(searchValue) || author.includes(searchValue) || isbn.includes(searchValue))
+                            (title.includes(searchValue) || author.includes(searchValue) || isbn.includes(searchValue)) &&
+                            (priceRangeValue === "" || (priceRangeValue === "0-10" && price >= 0 && price <= 10) ||
+                                (priceRangeValue === "10-30" && price > 10 && price <= 30) ||
+                                (priceRangeValue === "30-50" && price > 30 && price <= 50) ||
+                                (priceRangeValue === "50+" && price > 50))
                         ) {
                             row.style.display = "";
                             rowCount++; // Increment row count for visible rows
