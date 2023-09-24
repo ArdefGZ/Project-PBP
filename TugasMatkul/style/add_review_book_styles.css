@@ -1,0 +1,48 @@
+/* add_review_book_styles.css */
+
+body {
+    background-image: url('books.jpg'); /* Ganti 'background_image.jpg' dengan nama dan path file gambar yang Anda inginkan */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-color: #f8f9fa;
+}
+
+.container {
+    margin-top: 50px;
+    background-color: rgba(255, 255, 255, 0.8); /* Menambahkan latar belakang semi-transparan untuk konten */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    font-size: 24px;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.btn-primary, .btn-secondary {
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.alert-success {
+    margin-top: 20px;
+}
