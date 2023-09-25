@@ -1,7 +1,7 @@
 /* style.css */
 
 body {
-    background-image: url('books.jpg'); /* Ganti 'background.jpg' dengan nama dan path gambar sesuai kebutuhan Anda */
+    background-image: url('books.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
