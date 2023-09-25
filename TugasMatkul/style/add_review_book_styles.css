@@ -1,7 +1,7 @@
 /* add_review_book_styles.css */
 
 body {
-    background-image: url('books.jpg'); /* Ganti 'background_image.jpg' dengan nama dan path file gambar yang Anda inginkan */
+    background-image: url('books.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
