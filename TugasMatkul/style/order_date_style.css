@@ -2,11 +2,11 @@
 
 /* Styling for the body (background) */
 body {
-    background-image: url('books.jpg'); /* Ganti 'background-image.jpg' dengan path file gambar latar belakang Anda */
-    background-size: cover; /* Menyusuaikan gambar latar belakang agar sesuai dengan ukuran window */
-    background-repeat: no-repeat; /* Menghindari pengulangan gambar latar belakang */
-    background-attachment: fixed; /* Membuat gambar latar belakang tetap dalam posisi saat menggulir */
-    background-position: center center; /* Posisi gambar latar belakang di tengah */
+    background-image: url('books.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    background-position: center center; 
 }
 
 /* Styling for the container */
