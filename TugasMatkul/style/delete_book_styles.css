@@ -1,0 +1,65 @@
+/* style.css */
+
+/* Set background for the entire page */
+body {
+    background-image: url('books.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the container */
+.container {
+    width: 900px;
+    margin-top: 100px;
+    background-color: rgba(255, 255, 255, 0.9); /* Tambahkan latar belakang semi-transparan untuk kontainer */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Style the card */
+.card {
+    width: 800px;
+    margin-top: 100px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9); /* Tambahkan latar belakang semi-transparan untuk kartu */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the card header */
+.card-header {
+    background-color: #672828;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px 10px 0 0; /* Sudut atas kartu membulat */
+}
+
+/* Style the card body */
+.card-body {
+    text-align: center;
+}
+
+/* Style the heading */
+h3 {
+    color: #000000;
+}
+
+/* Style the button */
+.btn-primary {
+    background-color: #007BFF;
+    border-color: #007BFF;
+    color: #fff; /* Ganti warna teks tombol agar terlihat jelas di atas latar belakang biru */
+    border-radius: 5px;
+}
+
+/* Style the button on hover */
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
