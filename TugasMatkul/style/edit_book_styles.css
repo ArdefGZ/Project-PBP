@@ -2,7 +2,7 @@
 
 /* Background image */
 body {
-    background-image: url('books.jpg'); /* Ganti 'path/to/your/image.jpg' dengan path gambar latar belakang Anda */
+    background-image: url('books.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
