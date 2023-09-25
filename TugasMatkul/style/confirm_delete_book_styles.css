@@ -2,7 +2,7 @@
 
 /* Set background for the entire page */
 body {
-    background-image: url('books.jpg'); /* Gantilah 'your-background-image.jpg' dengan path ke gambar latar belakang Anda */
+    background-image: url('books.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
